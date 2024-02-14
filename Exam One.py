@@ -7,12 +7,14 @@ if PlayerReady in ['yes']:
     from random import randint
     Answer = randint(1,20)
     Attempts = 5
+    Guesses = 0
     PlayerGuess = int(input("Okay, "+ PlayerName +", You have 5 guesses. Guess a number between 1 and 20: "))
     while Attempts > 1:
         if PlayerGuess < 1 or PlayerGuess > 20:
             PlayerGuess = int(input("That is not a valid guess. Please guess a number between 1 and 20: "))
         elif PlayerGuess > Answer:
             Attempts -= 1
+            Guesses += 1
             if Attempts == 1:
                 print("Too high.",Attempts,"guess left.")
                 PlayerGuess = int(input("Guess again: "))
@@ -21,6 +23,7 @@ if PlayerReady in ['yes']:
                 PlayerGuess = int(input("Guess again: "))
         elif PlayerGuess < Answer:
             Attempts -= 1
+            Guesses += 1
             if Attempts == 1:
                 print("Too low.",Attempts,"guess left.")
                 PlayerGuess = int(input("Guess again: "))
@@ -28,7 +31,11 @@ if PlayerReady in ['yes']:
                 print("Too low.",Attempts,"guesses left.")
                 PlayerGuess = int(input("Guess again: "))
         elif PlayerGuess == Answer:
-            print(Answer,"is correct! Congratuations, "+ PlayerName +"!")
+            Guesses += 1
+            if Guesses == 1:
+                print(Answer,"is correct! Congratuations, "+ PlayerName +"! You guessed the correct number in only",Guesses,"attempt! Lucky you.")
+            else:
+                print(Answer,"is correct! Congratuations, "+ PlayerName +"! You guessed the correct number in",Guesses,"attempts.")
             break
     else:
         print("Sorry, "+ PlayerName+ ", but it looks like I've won. The correct answer was",Answer)
