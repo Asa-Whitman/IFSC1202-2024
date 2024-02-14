@@ -7,7 +7,7 @@ if PlayerReady in ['yes']:
     from random import randint
     Answer = randint(1,20)
     Attempts = 5
-    PlayerGuess = int(input("Okay, "+ PlayerName +", Guess a number between 1 and 20: "))
+    PlayerGuess = int(input("Okay, "+ PlayerName +", You have 5 guesses. Guess a number between 1 and 20: "))
     while Attempts > 1:
         if PlayerGuess < 1 or PlayerGuess > 20:
             PlayerGuess = int(input("That is not a valid guess. Please guess a number between 1 and 20: "))
